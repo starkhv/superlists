@@ -12,7 +12,6 @@ MAX_WAIT = 10
 
 
 class NewVisitorTest(StaticLiveServerTestCase):
-
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -46,8 +45,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
 
         self.assertEqual(
-                'Enter a to-do item',
-                inputbox.get_attribute('placeholder')
+            'Enter a to-do item',
+            inputbox.get_attribute('placeholder')
         )
 
         # She types "Buy peacock feathers" into a text box (Edith's hobby
@@ -64,7 +63,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
-
 
         # The page updates again, and now shows both items on her list
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
@@ -125,7 +123,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # She notices the input box is nicely centered
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(
-                inputbox.location['x'] + inputbox.size['width']/2,
-                960,
-                delta=10
-                )
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            960,
+            delta=10
+        )
