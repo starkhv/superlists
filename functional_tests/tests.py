@@ -1,8 +1,10 @@
 # built-in imports
 import time
 
-# third party imports
+# django testing imports
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+
+# third party imports
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
