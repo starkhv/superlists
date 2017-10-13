@@ -22,12 +22,11 @@ class LoginTest(FunctionalTest):
         # and notices a "Log in" section in the navbar for the first time
         # It's telling her to enter her email address, so she does
         if self.staging_server:
-            test_email = 'recent:' + 'ENTER EMAIL HERE'
+            test_email = ''
         else:
             test_email = TEST_EMAIL
         self.browser.get(self.live_server_url)
-        self.browser.find_element_by_name('email').send_keys(
-                test_email.split(':')[1])
+        self.browser.find_element_by_name('email').send_keys(test_email)
         self.browser.find_element_by_name('email').send_keys(Keys.ENTER)
 
         # A message appears telling her an email has been sent
@@ -37,7 +36,11 @@ class LoginTest(FunctionalTest):
         ))
 
         # She checks her email and finds a message
-        body = self.wait_for_email(test_email, SUBJECT)
+        if self.staging_server:
+            test_email_recent = 'recent:'+test_email
+        else:
+            test_email_recent = test_email
+        body = self.wait_for_email(test_email_recent, SUBJECT)
 
         # It has a url link in it
         self.assertIn('Use this link to log in', body)
