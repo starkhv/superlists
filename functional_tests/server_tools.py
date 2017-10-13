@@ -4,7 +4,7 @@ from fabric.context_managers import settings
 USERNAME = ''
 
 def _get_manage_dot_py(host):
-    return f'~/sites/{host}/virtualenv/bin/python ' +\
+    return f'~/sites/{host}/env/bin/python ' +\
         f'~/sites/{host}/source/manage.py'
 
 
